@@ -1,43 +1,44 @@
 import React, { useContext } from "react";
 // import { AuthContext } from "../providers/AuthProvider";
 import { Link, replace, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
-  // const { createUser,logoutUser } = useContext(AuthContext);
+  const { createUser,logoutUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
 
-    // const name = e.target.name.value;
-    // const email = e.target.email.value;
-    // const password = e.target.password.value;
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
 
-    // createUser(email, password)
-    //   .then((res) => {
-    //     console.log(res.user);
+    createUser(email, password)
+      .then((res) => {
+        console.log(res.user);
 
-    //     const newUser = {
-    //       name,
-    //       email,
-    //     };
-    //     return fetch("https://coffee-store-node-crud-server.onrender.com/users", {
-    //       method: "POST",
-    //       headers: { "content-type": "application/json" },
-    //       body: JSON.stringify(newUser),
-    //     });
-    //   })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log("User created", data);
-    //     return logoutUser(); 
-    //   })
-    //   .then(() => {
-    //     navigate("/signin", { replace: true });
-    //   })
-    //   .catch((error) => {
-    //     console.log("error", error);
-    //   });
+        const newUser = {
+          name,
+          email,
+        };
+        return fetch("https://coffee-store-node-crud-server.onrender.com/users", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(newUser),
+        });
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("User created", data);
+        return logoutUser(); 
+      })
+      .then(() => {
+        navigate("/signin", { replace: true });
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
 };
   return (
     <div className="hero bg-base-200 min-h-screen">

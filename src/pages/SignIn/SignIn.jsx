@@ -1,26 +1,27 @@
 import React, { useContext } from "react";
 // import { AuthContext } from "../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const SignIn = () => {
-  // const { signInUser } = useContext(AuthContext);
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  // const from = location.state?.from?.pathname || "/";
+  const { signInUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    // const email = e.target.email.value;
-    // const password = e.target.password.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
 
-    // signInUser(email, password)
-    //   .then(() => {
-    //     navigate(from, { replace: true });
-    //   })
-    //   .catch((err) => {
-    //     console.error(err);
-    //   });
-    // navigate("/", { replace: true });
+    signInUser(email, password)
+      .then(() => {
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    navigate("/", { replace: true });
   };
 
   return (

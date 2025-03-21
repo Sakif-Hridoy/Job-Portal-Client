@@ -27,7 +27,7 @@ const Header = () => {
                 {user && signInUser ? (
                     <>
                         <span className="mr-3 font-bold">{user.displayName || user.email}</span>
-                        <button onClick={handleLogout} className="btn btn-sm btn-error">Logout</button>
+                        <button onClick={handleLogout} className="btn btn-sm btn-secondary">Logout</button>
                     </>
                 ) : (
                     <>
