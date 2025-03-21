@@ -19,7 +19,7 @@ const Header = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     <li><NavLink className="font-bold" to="/">Home</NavLink></li>
-                    <li><NavLink className="font-bold" to="/addCoffee">Add Job</NavLink></li>
+                    <li><NavLink className="font-bold" to="/myApplications">My Applications</NavLink></li>
                     <li><NavLink className="font-bold" to="/users">Users</NavLink></li>
                 </ul>
             </div>
