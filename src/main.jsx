@@ -11,6 +11,7 @@ import Register from "./pages/Register/Register.jsx";
 import AuthProvider from "./providers/AuthProvider.jsx";
 import JobDetails from "./pages/JobDetails/JobDetails.jsx";
 import PrivateRoute from "./privateRoute/PrivateRoute.jsx";
+import JobApply from "./pages/JobApply/JobApply.jsx";
 
 // Loader function for fetching job details
 const jobDetailsLoader = async ({ params }) => {
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
         path: "/jobs/:id", 
         element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>, 
         loader:({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
+      },
+      { 
+        path: "/jobapply/:id", 
+        element: <PrivateRoute><JobApply></JobApply></PrivateRoute>, 
+        loader:({params})=> fetch(`http://localhost:5000/job/${params.id}`)
       },
     ],
   },
