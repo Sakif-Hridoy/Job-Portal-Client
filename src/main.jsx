@@ -10,6 +10,7 @@ import SignIn from "./pages/SignIn/SignIn.jsx";
 import Register from "./pages/Register/Register.jsx";
 import AuthProvider from "./providers/AuthProvider.jsx";
 import JobDetails from "./pages/JobDetails/JobDetails.jsx";
+import PrivateRoute from "./privateRoute/PrivateRoute.jsx";
 
 // Loader function for fetching job details
 const jobDetailsLoader = async ({ params }) => {
@@ -30,8 +31,8 @@ const router = createBrowserRouter([
       { path: "signin", element: <SignIn /> },
       { path: "register", element: <Register /> },
       { 
-        path: "jobs/:id", 
-        element: <JobDetails />, 
+        path: "/jobs/:id", 
+        element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>, 
         loader:({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
       },
     ],
