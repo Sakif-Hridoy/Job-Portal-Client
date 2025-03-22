@@ -13,6 +13,7 @@ import JobDetails from "./pages/JobDetails/JobDetails.jsx";
 import PrivateRoute from "./privateRoute/PrivateRoute.jsx";
 import JobApply from "./pages/JobApply/JobApply.jsx";
 import MyApplications from "./pages/MyApplications/MyApplications.jsx";
+import AddJob from "./pages/AddJob/AddJob.jsx";
 
 // Loader function for fetching job details
 const jobDetailsLoader = async ({ params }) => {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path:"/myApplications",
         element:<PrivateRoute><MyApplications></MyApplications></PrivateRoute>,
+      },
+      {
+        path:'addjob',
+        element:<PrivateRoute><AddJob></AddJob></PrivateRoute>
       }
     ],
   },

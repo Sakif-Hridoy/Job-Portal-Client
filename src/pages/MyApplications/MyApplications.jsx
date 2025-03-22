@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth";
 const MyApplications = () => {
   const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
-//   console.log(jobs)
+  console.log(jobs)
 
   useEffect(() => {
     fetch(`http://localhost:5000/job-applications?email=${user.email}`)
@@ -27,8 +27,8 @@ const MyApplications = () => {
               </th>
               <th>Email</th>
               <th>Job</th>
-              <th>Favorite Color</th>
-              <th></th>
+              <th>Job Type</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -46,19 +46,19 @@ const MyApplications = () => {
                       <span>{job.applicant_email}</span>
                     </div>
                     <div>
-                      <div className="font-bold">{job.title}</div>
-                      <div className="text-sm opacity-50">{job.location}</div>
+                      <div className="font-bold"></div>
+                      <div className="text-sm opacity-50"></div>
                     </div>
                   </div>
                 </td>
                 <td>
-                  Zemlak, Daniel and Leannon
+                  {job.title}
                   <br />
                   <span className="badge badge-ghost badge-sm">
-                    Desktop Support Technician
+                    {job.category}
                   </span>
                 </td>
-                <td>Purple</td>
+                <td>{job.jobType}</td>
                 <th>
                   <button className="btn btn-active btn-sm">DEL</button>
                 </th>
