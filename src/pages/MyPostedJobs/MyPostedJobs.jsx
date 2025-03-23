@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from "react";
-import useAuth from "../../hooks/useAuth";
+import React, { useEffect, useState } from 'react';
+import useAuth from '../../hooks/useAuth';
 
-const MyApplications = () => {
-  const { user } = useAuth();
-  const [jobs, setJobs] = useState([]);
-  console.log(jobs)
+const MyPostedJobs = () => {
+    const [jobs,setJobs] = useState([]);
+    const { user } = useAuth();
+    console.log(jobs)
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/job-applications?email=${user.email}`)
-      .then((res) => res.json())
-      .then((data) => setJobs(data));
-  }, [user.email]);
-
-  return (
-    <div>
-      <h2 className="text-3xl text-center font-bold">My Applications: {jobs.length}</h2>
+    useEffect(()=>{
+        fetch(`http://localhost:5000/jobs?email=${user.email}`)
+        .then(res=>res.json())
+        .then(data=>setJobs(data))
+    },[])
+    return (
+        <div>
+      <h2 className="text-3xl text-center font-bold">My Posted Jobs: {jobs.length}</h2>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -44,7 +43,7 @@ const MyApplications = () => {
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
-                      <span>{job.applicant_email}</span>
+                      <span>{user.email}</span>
                     </div>
                     <div>
                       <div className="font-bold"></div>
@@ -69,7 +68,7 @@ const MyApplications = () => {
         </table>
       </div>
     </div>
-  );
+    );
 };
 
-export default MyApplications;
+export default MyPostedJobs;
