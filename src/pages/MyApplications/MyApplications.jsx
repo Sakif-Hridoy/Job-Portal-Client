@@ -21,9 +21,7 @@ const MyApplications = () => {
           <thead>
             <tr>
               <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
+                Serial
               </th>
               <th>Email</th>
               <th>Job</th>
@@ -36,11 +34,7 @@ const MyApplications = () => {
             {jobs.map((job,index) => (
               <tr key={job._id}>
                 <th>{index+1}</th>
-                <th>
-                  <label>
-                    <input type="checkbox" className="checkbox" />
-                  </label>
-                </th>
+                
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
