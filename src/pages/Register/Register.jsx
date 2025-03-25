@@ -31,11 +31,11 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log("User created", data);
-        return logoutUser(); 
-      })
-      .then(() => {
-        navigate("/signin", { replace: true });
-      })
+        return logoutUser(),
+        navigate("/signin", { replace: true })
+
+      },
+    )
       .catch((error) => {
         console.log("error", error);
       });
