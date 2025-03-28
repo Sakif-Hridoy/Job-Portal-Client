@@ -16,7 +16,6 @@ const JobApply = () => {
     const github = form.github.value;
     const resume = form.resume.value;
     const api_key = import.meta.env.VITE_API_KEY;
-    console.log("API Key:", api_key);
 
     const jobApplication = {
       job_id: id,

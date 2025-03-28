@@ -14,7 +14,6 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const api_key = import.meta.env.VITE_API_KEY;
-  console.log("API Key:", api_key);
 
   // Create user (Sign Up)
   const createUser = (email, password) => {

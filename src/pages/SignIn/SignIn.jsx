@@ -16,7 +16,6 @@ const SignIn = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const api_key = import.meta.env.VITE_API_KEY; 
-    console.log("API Key:", api_key);
 
     signInUser(email, password)
       .then(res=>{console.log(res.user)

@@ -17,7 +17,6 @@ const AddJob = () => {
         newJob.requirements = newJob.requirements.split('\n');
         newJob.responsibilities = newJob.responsibilities.split('\n');
         const api_key = import.meta.env.VITE_API_KEY;
-        console.log("API Key:", api_key);
 
         fetch('http://localhost:5000/job', {
             method: 'POST',
