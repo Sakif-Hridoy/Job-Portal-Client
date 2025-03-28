@@ -15,6 +15,7 @@ const ViewApplications = () => {
       headers: {
         "content-type": "application/json",
       },
+      credentials:'include',
       body: JSON.stringify(data),
     })
       .then((res) => res.json())

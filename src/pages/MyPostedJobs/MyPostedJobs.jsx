@@ -6,12 +6,20 @@ const MyPostedJobs = () => {
   const [jobs, setJobs] = useState([]);
   const { user } = useAuth();
   console.log(jobs);
+  const api_key = import.meta.env.VITE_API_KEY;
+  console.log("API Key:", api_key);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs?email=${user.email}`)
+    fetch(`http://localhost:5000/jobs?email=${user.email}`,{
+      method:'GET',
+      headers:{
+        'content-type':'application/json',
+        'x-api-key':api_key,
+      }
+    })
       .then((res) => res.json())
       .then((data) => setJobs(data));
-  }, []);
+  }, [jobs,api_key,user.email]);
   return (
     <div>
       <h2 className="text-3xl text-center font-bold">

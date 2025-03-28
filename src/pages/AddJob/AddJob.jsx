@@ -16,12 +16,16 @@ const AddJob = () => {
         console.log(initialData)
         newJob.requirements = newJob.requirements.split('\n');
         newJob.responsibilities = newJob.responsibilities.split('\n');
+        const api_key = import.meta.env.VITE_API_KEY;
+        console.log("API Key:", api_key);
 
         fetch('http://localhost:5000/job', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'x-api-key':api_key
             },
+            credentials:'include',
             body: JSON.stringify(newJob)
         })
             .then(res => res.json())
@@ -42,7 +46,7 @@ const AddJob = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
-            <h2 className="text-3xl font-semibold text-center mb-6">Post a New Job</h2>
+            <h2 className="text-3xl font-semibold text-center mb-6">Post A New Job</h2>
             <form onSubmit={handleAddJob} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Job title */}
                 <div className="form-control">

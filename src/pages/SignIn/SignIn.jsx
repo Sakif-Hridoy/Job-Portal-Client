@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 
+
 const SignIn = () => {
   const { signInUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -14,12 +15,17 @@ const SignIn = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const api_key = import.meta.env.VITE_API_KEY; 
+    console.log("API Key:", api_key);
 
     signInUser(email, password)
       .then(res=>{console.log(res.user)
         const user = {email:res.user.email}
         axios.post("http://localhost:5000/jwt",user,{
           withCredentials:true,
+          headers:{
+            "x-api-key":api_key,
+          }
         }
           
         )

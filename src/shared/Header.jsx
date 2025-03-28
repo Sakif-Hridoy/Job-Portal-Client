@@ -20,7 +20,7 @@ const Header = () => {
                 <ul className="menu menu-horizontal px-1">
                     <li><NavLink className="font-bold" to="/">Home</NavLink></li>
                     <li><NavLink className="font-bold" to="/myApplications">My Applications</NavLink></li>
-                    <li><NavLink className="font-bold" to="/addjob">Add A Job</NavLink></li>
+                    <li><NavLink className="font-bold" to="/addjob">Post Job</NavLink></li>
                     <li><NavLink className="font-bold" to="/mypostedjobs">My Posted Jobs</NavLink></li>
                 </ul>
             </div>
