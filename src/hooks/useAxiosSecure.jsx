@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const axiosInstance = axios.create({
-    baseURL:'http://localhost:5000',
+    baseURL:'https://job-portal-server-nrz5.onrender.com',
     withCredentials:true
 })
 

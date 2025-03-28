@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser?.email) {
         const user = { email: currentUser?.email };
         axios
-          .post("http://localhost:5000/jwt", user, {
+          .post("https://job-portal-server-nrz5.onrender.com/jwt", user, {
             withCredentials: true,
             headers:{
             "x-api-key": api_key,
@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
       } else {
         axios
           .post(
-            "http://localhost:5000/logout",
+            "https://job-portal-server-nrz5.onrender.com/logout",
             {},
             {
               withCredentials: true,

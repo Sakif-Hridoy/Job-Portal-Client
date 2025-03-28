@@ -7,7 +7,7 @@ const HotJobs = () => {
   const api_key = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
-    fetch("http://localhost:5000/jobs", {
+    fetch("https://job-portal-server-nrz5.onrender.com/jobs", {
       method: "GET",
       headers: {
         "content-type": "application/json",
