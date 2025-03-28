@@ -21,7 +21,7 @@ const MyApplications = () => {
     axiosSecure.get(`job-applications?email=${user?.email}`)
     .then(res=>setJobs(res.data))
 
-  }, []);
+  }, [user?.email,axiosSecure]);
 
   return (
     <div>
