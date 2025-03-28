@@ -17,26 +17,12 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         console.log(res.user);
-
-        const newUser = {
-          name,
-          email,
-        };
-        return fetch("https://coffee-store-node-crud-server.onrender.com/users", {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(newUser),
-        });
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("User created", data);
+        console.log("User created");
         return logoutUser(),
         navigate("/signin", { replace: true })
 
-      },
-    )
-      .catch((error) => {
+      })
+    .catch((error) => {
         console.log("error", error);
       });
 };

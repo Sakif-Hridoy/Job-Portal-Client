@@ -13,6 +13,8 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const api_key = import.meta.env.VITE_API_KEY;
+  console.log("API Key:", api_key);
 
   // Create user (Sign Up)
   const createUser = (email, password) => {
@@ -41,6 +43,10 @@ const AuthProvider = ({ children }) => {
         axios
           .post("http://localhost:5000/jwt", user, {
             withCredentials: true,
+            headers:{
+            "x-api-key": api_key,
+
+            }
           })
           .then((res) => console.log(res.data));
         setUser(currentUser);
