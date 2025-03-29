@@ -1,43 +1,49 @@
 import React, { useContext } from "react";
-// import { AuthContext } from "../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
-
+import Swal from "sweetalert2";
 
 const SignIn = () => {
   const { signInUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+  const api_key = import.meta.env.VITE_API_KEY;
 
   const handleSignIn = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const api_key = import.meta.env.VITE_API_KEY; 
 
     signInUser(email, password)
-      .then(res=>{console.log(res.user)
-        const user = {email:res.user.email}
-        axios.post("https://job-portal-server-nrz5.onrender.com/jwt",user,{
-          withCredentials:true,
-          headers:{
-            "x-api-key":api_key,
-          }
-        }
-          
-        )
-        .then(data=>{
-          // console.log(data)
-          navigate(from, { replace: true })
-        })
+      .then((res) => {
+        console.log(res.user);
+        const user = { email: res.user.email };
+
+        axios
+          .post("https://job-portal-server-nrz5.onrender.com/jwt", user, {
+            withCredentials: true,
+            headers: {
+              "x-api-key": api_key,
+            },
+          })
+          .then(() => {
+            // Show success popup
+            Swal.fire({
+              title: "Logged In!",
+              text: "You have successfully logged in.",
+              icon: "success",
+              confirmButtonText: "OK",
+            }).then(() => {
+              // Redirect to "from" after clicking OK
+              navigate(from, { replace: true });
+            });
+          });
       })
       .catch((err) => {
         console.error(err);
       });
-
-
   };
 
   return (
