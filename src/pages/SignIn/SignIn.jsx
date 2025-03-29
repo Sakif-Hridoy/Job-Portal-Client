@@ -30,13 +30,12 @@ const SignIn = () => {
         )
         .then(data=>{
           // console.log(data)
-
+          navigate(from, { replace: true })
         })
       })
       .catch((err) => {
         console.error(err);
       });
-      navigate('/', { replace: true });
 
 
   };
