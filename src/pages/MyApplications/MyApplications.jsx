@@ -5,6 +5,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const MyApplications = () => {
   const { user } = useAuth();
+  console.log(user)
   const [jobs, setJobs] = useState([]);
   console.log(jobs)
 
@@ -21,7 +22,7 @@ const MyApplications = () => {
     axiosSecure.get(`job-applications?email=${user?.email}`)
     .then(res=>setJobs(res.data))
 
-  }, [user?.email,axiosSecure]);
+  }, []);
 
   return (
     <div>

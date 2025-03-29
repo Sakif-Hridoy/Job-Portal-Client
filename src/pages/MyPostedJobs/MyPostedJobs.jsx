@@ -9,7 +9,7 @@ const MyPostedJobs = () => {
   const api_key = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
-    fetch(`https://job-portal-server-nrz5.onrender.com/jobs?email=${user.email}`,{
+    fetch(`https://job-portal-server-nrz5.onrender.com/jobs?email=${user?.email}`,{
       method:'GET',
       headers:{
         'content-type':'application/json',
@@ -18,7 +18,7 @@ const MyPostedJobs = () => {
     })
       .then((res) => res.json())
       .then((data) => setJobs(data));
-  }, [jobs,api_key,user.email]);
+  }, []);
   return (
     <div>
       <h2 className="text-3xl text-center font-bold">
