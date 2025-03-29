@@ -1,5 +1,6 @@
 import React from "react";
 import jobBanner from "../../assets/images/job-banner.jpg"
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -21,7 +22,7 @@ const Banner = () => {
             Each month, more than 3 million job seekers turn to website in their
             search for work, making over 140,000 applications every single day
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <Link to="/HotJobs"><button className="btn btn-primary">Get Started</button></Link>
         </div>
       </div>
     </div>
