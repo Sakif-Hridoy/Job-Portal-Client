@@ -20,7 +20,7 @@ const SignIn = () => {
     signInUser(email, password)
       .then(res=>{console.log(res.user)
         const user = {email:res.user.email}
-        axios.post("http://localhost:5000/jwt",user,{
+        axios.post("https://job-portal-server-nrz5.onrender.com/jwt",user,{
           withCredentials:true,
           headers:{
             "x-api-key":api_key,

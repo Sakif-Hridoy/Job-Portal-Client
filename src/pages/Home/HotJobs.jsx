@@ -3,17 +3,18 @@ import HotJobCard from "./HotJobCard";
 
 const HotJobs = () => {
   const [jobs, setJobs] = useState([]);
+  console.log(jobs)
   const [activeCategory, setActiveCategory] = useState("All Jobs");
   const api_key = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
-    fetch("http://localhost:5000/jobs", {
+    fetch("https://job-portal-server-nrz5.onrender.com/jobs", {
       method: "GET",
-      headers: {
-        "content-type": "application/json",
-        "x-api-key": api_key,
-      },
-      credentials:"include",
+      // headers: {
+      //   "content-type": "application/json",
+      //   "x-api-key": api_key,
+      // },
+      // credentials:"include",
     })
       .then((res) => res.json())
       .then((data) => {

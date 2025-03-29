@@ -18,7 +18,7 @@ const AddJob = () => {
         newJob.responsibilities = newJob.responsibilities.split('\n');
         const api_key = import.meta.env.VITE_API_KEY;
 
-        fetch('http://localhost:5000/job', {
+        fetch('https://job-portal-server-nrz5.onrender.com/job', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
