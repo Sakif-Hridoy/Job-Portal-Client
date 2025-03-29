@@ -13,6 +13,7 @@ const HotJobs = () => {
         "content-type": "application/json",
         "x-api-key": api_key,
       },
+      credentials:"include",
     })
       .then((res) => res.json())
       .then((data) => {

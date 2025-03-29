@@ -3,10 +3,15 @@ import React, { useEffect } from 'react';
 import useAuth from './useAuth';
 import { useNavigate } from 'react-router-dom';
 
+const api_key = import.meta.env.VITE_API_KEY; 
 
 const axiosInstance = axios.create({
     baseURL:'https://job-portal-server-nrz5.onrender.com',
     withCredentials:true,
+    headers:{
+      "Content-Type":"application/json",
+      "x-api-key":api_key,
+    }
 
 })
 
