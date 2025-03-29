@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, logoutUser } = useContext(AuthContext);
@@ -27,7 +28,20 @@ const Register = () => {
       .then((res) => {
         console.log(res.user);
         console.log("User created");
-        return logoutUser(), navigate("/signin", { replace: true });
+
+        // Log out user for security
+        logoutUser().then(() => {
+          // Show success popup
+          Swal.fire({
+            title: "Registration Successful!",
+            text: "Your account has been created. Please sign in.",
+            icon: "success",
+            confirmButtonText: "OK",
+          }).then(() => {
+            // Redirect to Sign In after popup
+            navigate("/signin", { replace: true });
+          });
+        });
       })
       .catch((error) => {
         console.log("error", error);
