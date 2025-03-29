@@ -38,12 +38,12 @@ const router = createBrowserRouter([
       { 
         path: "/jobs/:id", 
         element: <PrivateRoute><JobDetails></JobDetails></PrivateRoute>, 
-        loader:({params})=> fetch(`https://job-portal-server-nrz5.onrender.com/jobs/${params.id}`)
+        loader:({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
       },
       { 
         path: "/jobapply/:id", 
         element: <PrivateRoute><JobApply></JobApply></PrivateRoute>, 
-        loader:({params})=> fetch(`https://job-portal-server-nrz5.onrender.com/jobs/${params.id}`)
+        loader:({params})=> fetch(`http://localhost:5000/jobs/${params.id}`)
       },
       {
         path:"/myApplications",
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
       {
         path:'viewApplications/:job_id',
         element:<PrivateRoute><ViewApplications></ViewApplications></PrivateRoute>,
-        loader:({params})=> fetch (`https://job-portal-server-nrz5.onrender.com/job-applications/jobs/${params.job_id}`)
+        loader:({params})=> fetch (`http://localhost:5000/job-applications/jobs/${params.job_id}`)
       }
     ],
   },

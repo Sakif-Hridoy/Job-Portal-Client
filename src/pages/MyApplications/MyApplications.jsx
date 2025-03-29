@@ -11,10 +11,10 @@ const MyApplications = () => {
   const axiosSecure = useAxiosSecure()
 
   useEffect(() => {
-    // fetch(`https://job-portal-server-nrz5.onrender.com/job-applications?email=${user.email}`)
+    // fetch(`http://localhost:5000/job-applications?email=${user.email}`)
     //   .then((res) => res.json())
     //   .then((data) => setJobs(data));
-    // axios.get(`https://job-portal-server-nrz5.onrender.com/job-applications?email=${user.email}`,{
+    // axios.get(`http://localhost:5000/job-applications?email=${user.email}`,{
     //   withCredentials:true
     // })
     // .then(res=>setJobs(res.data))

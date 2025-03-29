@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const api_key = import.meta.env.VITE_API_KEY; 
 
 const axiosInstance = axios.create({
-    baseURL:'https://job-portal-server-nrz5.onrender.com',
+    baseURL:'http://localhost:5000',
     withCredentials:true,
     headers:{
       "Content-Type":"application/json",

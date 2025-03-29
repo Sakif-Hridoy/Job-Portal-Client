@@ -25,7 +25,7 @@ const JobApply = () => {
       resume,
     };
 
-    fetch("https://job-portal-server-nrz5.onrender.com/job-application", {
+    fetch("http://localhost:5000/job-application", {
       method: "POST",
       headers: {
         "content-type": "application/json",
