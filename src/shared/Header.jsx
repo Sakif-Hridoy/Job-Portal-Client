@@ -21,7 +21,7 @@ const Header = () => {
           Job Portal
         </Link>
 
-        {/* Desktop Menu */}
+        {/* Desktop Menu (Hidden on Small Screens) */}
         <div className="hidden lg:flex space-x-6">
           <NavLink className="font-bold" to="/">
             Home
@@ -37,7 +37,31 @@ const Header = () => {
           </NavLink>
         </div>
 
-        {/* Mobile Menu Icon */}
+        {/* User Actions (Always Visible) */}
+        <div className="hidden lg:flex items-center space-x-4">
+          {user && signInUser ? (
+            <>
+              <span className="font-bold">{user.displayName || user.email}</span>
+              <button
+                onClick={handleLogout}
+                className="btn btn-sm btn-secondary"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <NavLink className="btn btn-sm btn-primary" to="/signin">
+                Sign In
+              </NavLink>
+              <NavLink className="btn btn-sm" to="/register">
+                Register
+              </NavLink>
+            </>
+          )}
+        </div>
+
+        {/* Mobile Menu Toggle Button */}
         <div className="lg:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
@@ -55,9 +79,9 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed top-0 left-0 w-full h-full bg-white z-50 transform ${
-          menuOpen ? "translate-y-0" : "-translate-y-full"
-        } transition-transform duration-300 ease-in-out flex flex-col items-center justify-center`}
+        className={`fixed top-0 left-0 w-3/4 h-full bg-white z-50 transform ${
+          menuOpen ? "translate-x-0" : "-translate-x-full"
+        } transition-transform duration-300 ease-in-out flex flex-col items-center py-10 space-y-6`}
       >
         {/* Close Button */}
         <button
@@ -67,7 +91,7 @@ const Header = () => {
           <FiX />
         </button>
 
-        <ul className="flex flex-col items-center space-y-6 text-xl font-semibold">
+        <ul className="flex flex-col items-center space-y-6 text-lg font-semibold">
           <NavLink
             className="hover:text-blue-600"
             to="/"
@@ -98,14 +122,14 @@ const Header = () => {
           </NavLink>
         </ul>
 
-        {/* User Actions */}
-        <div className="mt-6">
+        {/* User Actions in Mobile Menu */}
+        <div className="mt-6 flex flex-col items-center space-y-4">
           {user && signInUser ? (
             <>
               <span className="block text-lg font-bold">{user.displayName || user.email}</span>
               <button
                 onClick={handleLogout}
-                className="btn btn-secondary mt-4 px-6 py-2 text-lg"
+                className="btn btn-secondary px-6 py-2 text-lg"
               >
                 Logout
               </button>
@@ -120,7 +144,7 @@ const Header = () => {
                 Sign In
               </NavLink>
               <NavLink
-                className="btn mt-4 px-6 py-2 text-lg"
+                className="btn px-6 py-2 text-lg"
                 to="/register"
                 onClick={() => setMenuOpen(false)}
               >
