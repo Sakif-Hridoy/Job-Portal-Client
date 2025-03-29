@@ -1,31 +1,39 @@
-import React, { useContext } from "react";
-// import { AuthContext } from "../providers/AuthProvider";
-import { Link, replace, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
-  const { createUser,logoutUser } = useContext(AuthContext);
+  const { createUser, logoutUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
+    setError("");
 
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
 
+    // Password validation regex
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+    if (!passwordRegex.test(password)) {
+      setError("Password must be at least 6 characters long, contain one uppercase letter, and one number.");
+      return;
+    }
+
     createUser(email, password)
       .then((res) => {
         console.log(res.user);
         console.log("User created");
-        return logoutUser(),
-        navigate("/signin", { replace: true })
-
+        return logoutUser(), navigate("/signin", { replace: true });
       })
-    .catch((error) => {
+      .catch((error) => {
         console.log("error", error);
       });
-};
+  };
+
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-col">
@@ -42,6 +50,7 @@ const Register = () => {
                 name="name"
                 className="input"
                 placeholder="Name"
+                required
               />
               <label className="fieldset-label">Email</label>
               <input
@@ -49,6 +58,7 @@ const Register = () => {
                 name="email"
                 className="input"
                 placeholder="Email"
+                required
               />
               <label className="fieldset-label">Password</label>
               <input
@@ -56,7 +66,11 @@ const Register = () => {
                 className="input"
                 placeholder="Password"
                 name="password"
+                required
               />
+              {/* Warning message for invalid password */}
+              {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+
               <h5 className="">
                 Already Registered?{" "}
                 <Link className="text-blue-700" to="/signin">
