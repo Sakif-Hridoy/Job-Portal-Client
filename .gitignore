@@ -1,24 +1,49 @@
+# Node modules
+/node_modules/
+
+# Build output
+/build/
+/dist/
+
 # Logs
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Dependency directory
+/.pnp
+.pnp.js
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# OS generated files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+
+# Environment variable files
+.env
+
+# Firebase config file
+/src/firebase/firebase.config.js
+
+# React specific
+/.cache/
+/public/assets/
+
+# IDE or Editor-specific files
+.vscode/
+/.idea/
+
+# Optional npm cache directory
+.npm/
+
+# Mac-specific files
+.AppleDouble
+.LSOverride
+
+# Windows installer files
+Thumbs.db
+ehthumbs.db
+
+# Linux swap files
+*~
